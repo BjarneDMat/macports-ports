@@ -4,8 +4,9 @@
 # standalone port, then set php.branches and optionally any other php options,
 # described in more detail below.
 
-categories              php lang
+default categories              {php lang}
 
+set phpknownfails           {5.2 5.3 5.4 5.5 5.6 7.0 7.1 7.2 7.3 7.4 8.0}
 
 # php.branches: the list of PHP branches for which the extension(s) will be
 # built. For unified extension ports (name begins with "php-") setting
@@ -81,7 +82,6 @@ proc php._set_branches {option action args} {
         }
     }
 }
-
 
 # Set php.branches automatically if the port name includes the PHP branch.
 
@@ -370,6 +370,13 @@ pre-livecheck {
 proc php.add_port_code {} {
     global php php.branch php.branches php.build_dirs php.config php.extension_ini php.extensions php.ini_dir php.rootname
     global destroot name subport version xcodeversion
+    global phpknownfails
+
+    if {[vercmp ${php.branch} >= 8.5]} {
+        PortGroup       legacysupport 1.1
+        # clock_gettime
+        legacysupport.newest_darwin_requires_legacy 15
+    }
 
     # Set up distfiles default for non-bundled extensions.
     default distname        {${php.rootname}-${version}}
@@ -388,6 +395,12 @@ proc php.add_port_code {} {
                 ui_error "${subport} @${version} cannot currently be compiled with Xcode 12 or later"
                 return -code error "incompatible Xcode version"
             }
+        }
+    }
+
+    platform darwin {
+        if {${php.branch} in ${phpknownfails}} {
+            known_fail          yes
         }
     }
 
