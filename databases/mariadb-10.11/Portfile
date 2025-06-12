@@ -7,7 +7,7 @@ legacysupport.newest_darwin_requires_legacy 15
 
 name                mariadb-10.11
 set name_mysql      ${name}
-version             10.11.13
+version             10.11.15
 set version_branch  [join [lrange [split ${version} .] 0 1] .]
 # Please set revision_client and revision_server to 0 if you bump
 # version; these can be changed independently for the 2 subports, but
@@ -25,7 +25,7 @@ if {$subport eq $name} {
     PortGroup           boost 1.0
     PortGroup           openssl 1.0
 
-    boost.version       1.87
+    boost.version       1.88
     compiler.cxx_standard 2011
 
     openssl.branch      3
@@ -43,9 +43,9 @@ if {$subport eq $name} {
 
     master_sites    https://downloads.mariadb.org/rest-api/mariadb/${version}/
     distname        mariadb-${version}
-    checksums       rmd160  c4d314d228a267e4a0dc83797408b51e16b97cba \
-                    sha256  f8b734749fbd652ea4e255be8cc7880f98d07b6a7feb4e1ea8c736cb480d23e4 \
-                    size    109323757
+    checksums       rmd160  4de13f5d3032c939eb4dfaced62e26b782b8f0d5 \
+                    sha256  5311e85765402bde5a81a9a7b2643a7378d20316a2822bfad4b6ddcf104759a5 \
+                    size    112564914
 
     depends_build-append port:bison
     depends_lib-append  port:curl \
