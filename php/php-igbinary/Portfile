@@ -18,6 +18,9 @@ if {[vercmp ${php.branch} >= 7.0]} {
     checksums       rmd160  26d4b5ffddb6c2692b6bca70f1c1279a605d75bb \
                     sha256  8bf25d465abc7973d9e2c9a3039a5f8eea635b23bc1477017ff3999ff95836da \
                     size    103279
+    patch.pre_args-replace  -p0 -p1
+    patchfiles-append \
+                    patch-src_php7_php_igbinary.h.diff
 } elseif {[vercmp ${php.branch} >= 5.2]} {
     version         2.0.8
     revision        0
