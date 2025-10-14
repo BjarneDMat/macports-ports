@@ -16,7 +16,13 @@ php.pecl                yes
 description             Library to provide API for communicating with gearmand, using libgearman.
 long_description        Library to provide API for communicating with gearmand, and writing clients and workers.
 
-if {[vercmp ${php.branch} >= 7.1]} {
+if {[vercmp ${php.branch} >= 7.2]} {
+    version             2.2.1
+    revision            0
+    checksums           rmd160  2d6c3ec52c921812859eed1e6966ac156e78492f \
+                        sha256  b9f826c90c87e6abd74cc3a73132c025c03e4bd2ae4360c4edc822ff651d694d \
+                        size    53047
+} elseif {[vercmp ${php.branch} >= 7.1]} {
     version             2.1.4
     revision            0
     checksums           rmd160  2c7a401c711b804767459458f1125229c94f161c \
