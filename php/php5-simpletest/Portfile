@@ -7,7 +7,7 @@ PortGroup obsolete      1.0
 name                    php5-simpletest
 version                 1.1.0
 categories-append       devel
-maintainers             nomaintainer
+maintainers             {ryandesign @ryandesign} {mathiesen.info:macintosh @BjarneDMat}
 license                 LGPL-2
 
 homepage                http://simpletest.org/
