@@ -1953,7 +1953,9 @@ subport ${php}-openssl {
     }
 }
 
-if {[vercmp ${branch} < 8.4]} {
+if {[vercmp ${branch} < 8.3]} {
+# oracle was evicted from PHP core in version 8.4;
+# php83-oracle and later subports are found in the separate php-oracle Portfile.
 subport ${php}-oracle {
     switch -- ${version} {
         5.2.17              {revision 0}
